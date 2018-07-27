@@ -1,0 +1,3 @@
+interface ThresholdTask {
+    int[] acquire();
+}
