@@ -1,0 +1,7 @@
+.gitattributes export-ignore
+*.js export-ignore
+*.html export-ignore
+*.java export-ignore
+*.py export-ignore
+*.cpp export-ignore
+*.c export-ignore
