@@ -27,15 +27,17 @@ class HScrollbar {
     loose = l;
   }
 
-  void update() {
+  boolean update() {
     //if (overEvent()) {
     //  over = true;
     //} else {
     //  over = false;
     //}
+    boolean result = false;
     over = overEvent();
     if (mousePressed && over) {
       locked = true;
+      result = true;
     }
     if (!mousePressed) {
       locked = false;
@@ -46,6 +48,7 @@ class HScrollbar {
     if (abs(newspos - spos) > 1) {
       spos = spos + (newspos-spos)/loose;
     }
+    return result;
   }
 
   float constrain(float val, float minv, float maxv) {

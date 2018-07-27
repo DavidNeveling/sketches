@@ -37,11 +37,11 @@
       pic.pixels[i] = color(colorVal);
       thresh[colorVal]++;
     }
-    /*
+    
     for(int i = 0; i < thresh.length; i++){
         println(thresh[i]);    
     }
-    */
+    
   }
   //
   // DETERMINE THRESHOLDS
@@ -62,4 +62,89 @@
   }
   pic.updatePixels();
 }
+*/
+
+/*
+    if (colorSelected) {
+        background(0);
+        pic = loadImage(names[index]);
+        updateImg();
+        //if(names[index].endsWith(".gif")){
+        //  pic.save("" + names[index] + ".changed.gif");
+        //}
+        //else{
+        pic.save("" + names[index] + ".changed.png");
+        //}
+        if (pic.width > width) {
+            pic.resize((int)((float)pic.width * ((float)width / (float)pic.width)), (int)((float)pic.height * ((float)width / (float)pic.width)));
+        }
+        if (pic.height > height) {
+            pic.resize((int)((float)pic.width * ((float)height / (float)pic.height)), (int)((float)pic.height * ((float)height / (float)pic.height)));
+        }
+        translate(width / 2, height / 2);
+        imageMode(CENTER);
+        image(pic, 0, 0);
+        noLoop();
+*/
+
+/*
+lcR = new HScrollbar(0, (3 * height) / 20, (6 * width) / 7, height / 20, 1);
+lcG = new HScrollbar(0, (4 * height) / 20, (6 * width) / 7, height / 20, 1);
+lcB = new HScrollbar(0, (5 * height) / 20, (6 * width) / 7, height / 20, 1);
+mcR = new HScrollbar(0, (7 * height) / 20, (6 * width) / 7, height / 20, 1);
+mcG = new HScrollbar(0, (8 * height) / 20, (6 * width) / 7, height / 20, 1);
+mcB = new HScrollbar(0, (9 * height) / 20, (6 * width) / 7, height / 20, 1);
+hcR = new HScrollbar(0, (11 * height) / 20, (6 * width) / 7, height / 20, 1);
+hcG = new HScrollbar(0, (12 * height) / 20, (6 * width) / 7, height / 20, 1);
+hcB = new HScrollbar(0, (13 * height) / 20, (6 * width) / 7, height / 20, 1);
+tcR = new HScrollbar(0, (15 * height) / 20, (6 * width) / 7, height / 20, 1);
+tcG = new HScrollbar(0, (16 * height) / 20, (6 * width) / 7, height / 20, 1);
+tcB = new HScrollbar(0, (17 * height) / 20, (6 * width) / 7, height / 20, 1);
+*/
+
+/*
+} else if (fileSelected) {
+    background(150);
+    textAlign(CENTER);
+    text("Select your colors", width/2, height/20);
+    lcR.update();
+    lcR.display();
+    lcG.update();
+    lcG.display();
+    lcB.update();
+    lcB.display();
+    lowerColor = color(lcR.getPos(), lcG.getPos(), lcB.getPos());
+    fill(lowerColor);
+    rect(lcR.swidth + lcR.sheight, lcR.ypos, 3 * lcR.sheight, 3 * lcR.sheight);
+    mcR.update();
+    mcR.display();
+    mcG.update();
+    mcG.display();
+    mcB.update();
+    mcB.display();
+    midColor = color(mcR.getPos(), mcG.getPos(), mcB.getPos());
+    fill(midColor);
+    rect(lcR.swidth + lcR.sheight, mcR.ypos, 3 * lcR.sheight, 3 * lcR.sheight);
+    hcR.update();
+    hcR.display();
+    hcG.update();
+    hcG.display();
+    hcB.update();
+    hcB.display();
+    highColor = color(hcR.getPos(), hcG.getPos(), hcB.getPos());
+    fill(highColor);
+    rect(lcR.swidth + lcR.sheight, hcR.ypos, 3 * lcR.sheight, 3 * lcR.sheight);
+    tcR.update();
+    tcR.display();
+    tcG.update();
+    tcG.display();
+    tcB.update();
+    tcB.display();
+    topColor = color(tcR.getPos(), tcG.getPos(), tcB.getPos());
+    fill(topColor);
+    rect(lcR.swidth + lcR.sheight, tcR.ypos, 3 * lcR.sheight, 3 * lcR.sheight);
+    load.Draw();
+    if (load.clicked()) {
+        colorSelected = true;
+    }
 */

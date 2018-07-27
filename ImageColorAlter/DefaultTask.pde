@@ -1,5 +1,5 @@
 class DefaultTask implements ThresholdTask {
-    int[] acquire() {
-        return new int[3] {5, 80, 200};    
+    int[] acquire(int thresholds, PImage pic) {
+        return new int[] {5, 80, 200};    
     }
 }
