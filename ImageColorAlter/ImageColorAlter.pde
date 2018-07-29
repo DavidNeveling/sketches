@@ -1,6 +1,7 @@
 import java.io.FilenameFilter;
 import java.io.File.*;
 import java.lang.Exception;
+import java.util.Collections;
 import static java.lang.System.*;
 
 static final FilenameFilter FILTER = new FilenameFilter() {
@@ -55,6 +56,7 @@ void setup() {
     tasks = new ArrayList<ThresholdTask>();
     tasks.add(new DefaultTask());
     tasks.add(new EvenTask());
+    tasks.add(new ClusteringTask());
     
     load = new Button("LOAD IMAGE", (7 * width) / 8, (7 * height) / 8, width / 8, height / 8);
     maxEnd = names.length * 100;
@@ -62,7 +64,7 @@ void setup() {
     index = 0;
     offset = 30;
     
-    numThresholds = 6; // originally designed around 3
+    numThresholds = 3; // originally designed around 3
     thresholds = new int[numThresholds];
     thresholdColors = new int[numThresholds + 1];
     scrollbars = new SuperHScrollbar[numThresholds + 1];
@@ -160,13 +162,30 @@ void updateImg() {
          }
      */
 
-    int taskIndex = 1;
+    int taskIndex = 2;
     
     //
     // DETERMINE THRESHOLDS
     //
     
     thresholds = tasks.get(taskIndex).acquire(numThresholds, pic);
+    
+    for (int i = 0; i < thresholds.length; i++) {
+        for (int j = i; j < thresholds.length; j++) {
+            if (thresholds[j] < thresholds[i]) {
+                int temp = thresholds[j];
+                thresholds[j] = thresholds[i];
+                thresholds[i] = temp;
+            }
+        }
+    }
+    
+    print("[");
+    print(thresholds[0]);
+    for (int i = 1; i < thresholds.length; i++) {
+        print(", " + thresholds[i]);
+    }
+    println("]");
     
     for (int i = 0; i < (pic.width * pic.height); i++) {
         boolean found = false;
