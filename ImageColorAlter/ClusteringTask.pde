@@ -72,7 +72,7 @@ class SuperImage {
             v = val;
         }
         
-        int compareTo(Object other) {
+        int compareTo(Object other) { // sorts to descending order
             if (other instanceof ClusterGSCentroid){
                 if(((ClusterGSCentroid)other).v > v) {
                     return 1;

@@ -1,3 +1,5 @@
+import controlP5.*;
+
 import java.io.FilenameFilter;
 import java.io.File.*;
 import java.lang.Exception;
@@ -13,9 +15,9 @@ static final FilenameFilter FILTER = new FilenameFilter() {
 };
 
 File p = dataFile(dataPath(""));
-File f = new File("D:\\processing-3.3.6\\sketches\\ImageColorAlter\\data");
-String[] names = f.list(FILTER);
-Button[] files = new Button[names.length];
+File f = new File("E:\\processing-3.3.6\\sketches\\ImageColorAlter\\data");
+String[] names;
+Button[] files;
 
 PImage pic;
 int index;
@@ -38,12 +40,16 @@ boolean set;
 int[] thresh;
 
 Button load;
+ControlP5 cp5;
+
 void setup() {
-    //size(400, 400);
-    //surface.setResizable(true);
-    //surface.setSize(displayWidth, displayHeight);
-    fullScreen();
-    
+    size(400, 400);
+    surface.setResizable(true);
+    surface.setSize(displayWidth, displayHeight);
+    //fullScreen();
+    cp5 = new ControlP5(this);
+    names = f.list(FILTER);
+    files = new Button[names.length];
     fileSelected = false;
     colorSelected = false;
     filesStart = 0;
@@ -64,7 +70,7 @@ void setup() {
     index = 0;
     offset = 30;
     
-    numThresholds = 3; // originally designed around 3
+    numThresholds = 30; // originally designed around 3
     thresholds = new int[numThresholds];
     thresholdColors = new int[numThresholds + 1];
     scrollbars = new SuperHScrollbar[numThresholds + 1];
@@ -92,7 +98,7 @@ void draw() {
         pic = loadImage(names[index]);
         updateImg();
 
-        pic.save("" + names[index] + "_changed.png");
+        pic.save("changed/" + names[index] + "_changed.png");
 
         if (pic.width > width) {
             pic.resize((int)((float)pic.width * ((float)width / (float)pic.width)), (int)((float)pic.height * ((float)width / (float)pic.width)));
@@ -106,7 +112,23 @@ void draw() {
         image(pic, 0, 0);
         noLoop();
     } else if (fileSelected) {
+        /*thresholds = new int[numThresholds];
+        thresholdColors = new int[numThresholds + 1];
+        scrollbars = new SuperHScrollbar[numThresholds + 1];
         
+        int scrollbarHeight = int((.75 * height) / (4 * (numThresholds + 1)));
+        int scrollbarWidth = (6 * width) / 7;
+        int scrollbarStart = (3 * height) / 20;
+        
+        for (int i = 0; i <= numThresholds; i++) {
+            thresholdColors[i] = color(map(i, 0, 3, 0, 255));    
+            int temp = i * 4;
+            scrollbars[i] = new SuperHScrollbar(
+                new HScrollbar(0, scrollbarStart + (temp) * scrollbarHeight, scrollbarWidth, scrollbarHeight, 1), 
+                new HScrollbar(0, scrollbarStart + (temp + 1) * scrollbarHeight, scrollbarWidth, scrollbarHeight, 1),
+                new HScrollbar(0, scrollbarStart + (temp + 2) * scrollbarHeight, scrollbarWidth, scrollbarHeight, 1)
+            );
+        }*/
         background(150);
         textAlign(CENTER);
         text("Select your colors", width/2, height/20);
@@ -130,10 +152,10 @@ void draw() {
         background(100);
 
         // For debugging purposes, need to fix auto path
-        //out.println(dataPath(""));
-        //out.println(sketchPath(""));
-        //out.println(f.getPath());
-        //out.println(p.getPath());
+        out.println(dataPath(""));
+        out.println(sketchPath(""));
+        out.println(f.getPath());
+        out.println(p.getPath());
 
         for (int i = 0; i < names.length; i++) {
             files[i].setY((i * 100) + filesStart);

@@ -1,0 +1,3 @@
+enum Mode{
+    GAME, SOLVING, SOLVED, MOVING, PATHING;    
+}

@@ -8,8 +8,8 @@ void setup(){
     squareWidth = 200;
     numSquares = 5;
     surface.setSize(numSquares*squareWidth, squareWidth);
-    c1 = color(200, 200, 255);
-    c2 = color(0);
+    c1 = color(35, 145, 252);
+    c2 = color(197, 180, 110);
 }
 
 void draw(){

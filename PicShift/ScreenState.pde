@@ -1,0 +1,3 @@
+enum ScreenState {
+    LOAD, SHIFT;    
+}
