@@ -1,8 +1,11 @@
+
 boolean[][] grid;
 int scale, off;
 Button sim, clear;
 boolean play;
-
+boolean go;
+float time;
+float prevtime;
 void setup(){
     size(800, 800);
     sim = new Button("PLAY", 0, 0, width / 16, height / 24);
@@ -11,13 +14,22 @@ void setup(){
     off = 1;
     grid = new boolean[width / scale][height / scale];
     play = false;
+    time = System.currentTimeMillis();
+    prevtime = time;
+    go = true;
 }
 
 void draw(){
     background(200);
-    if (play)
+    if (play) {
+        //time = System.currentTimeMillis();
+        //if (time > prevtime) {
+        //  prevtime = time;
+        //  updateGrid();
+        //}
+        delay(200);
         updateGrid();
-      
+    }
     /*    
     if (sim.clicked()) {
         if (sim.label.compareTo("PLAY") == 0){
@@ -44,6 +56,9 @@ void draw(){
     drawGrid();
     sim.show();
     clear.show();
+
+
+    
 }
 
 void drawGrid(){

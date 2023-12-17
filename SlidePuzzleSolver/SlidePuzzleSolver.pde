@@ -22,7 +22,7 @@ void setup(){
     realHeight = height - (height / 10.0);
     gridX = width / 20.0;
     gridY = height / 20.0;
-    size = 4;
+    size = 3;
     blockWidth = realWidth / size;
     blockHeight = realHeight / size;
     buttonWidth = blockWidth / 2;

@@ -15,7 +15,7 @@ static final FilenameFilter FILTER = new FilenameFilter() {
 };
 
 File p = dataFile(dataPath(""));
-File f = new File("E:\\processing-3.3.6\\sketches\\ImageColorAlter\\data");
+File f = new File("D:\\Code\\processing-4.3\\sketches\\ImageColorAlter\\data");
 String[] names;
 Button[] files;
 
@@ -70,7 +70,7 @@ void setup() {
     index = 0;
     offset = 30;
     
-    numThresholds = 30; // originally designed around 3
+    numThresholds = 5; // originally designed around 3
     thresholds = new int[numThresholds];
     thresholdColors = new int[numThresholds + 1];
     scrollbars = new SuperHScrollbar[numThresholds + 1];
