@@ -1,3 +1,5 @@
+import java.utils.Collections;
+
 class Walker {
   float x, y, s;
   Direction d;
@@ -23,6 +25,30 @@ class Walker {
     this(x, y);
     this.d = d;
     this.s = s;
+  }
+  
+  void setDirection() {
+      Direction[] newDirection;// = new Direction[3];
+      switch (d) {
+        case UP:
+          newDirection = new Direction[]{Direction.UP, Direction.RIGHT, Direction.LEFT};
+          d = newDirection[int(random(3))];
+          break;
+        case DOWN:
+          newDirection = new Direction[]{Direction.DOWN, Direction.RIGHT, Direction.LEFT};
+          d = newDirection[int(random(3))];
+          break;
+        case LEFT:
+          newDirection = new Direction[]{Direction.UP, Direction.DOWN, Direction.LEFT};
+          d = newDirection[int(random(3))];
+          break;
+        case RIGHT:
+          newDirection = new Direction[]{Direction.UP, Direction.RIGHT, Direction.DOWN};
+          d = newDirection[int(random(3))];
+          break;
+        default:
+          break;
+      }
   }
   
   void update() {
