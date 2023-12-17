@@ -1,5 +1,3 @@
-import java.utils.Collections;
-
 class Walker {
   float x, y, s;
   Direction d;

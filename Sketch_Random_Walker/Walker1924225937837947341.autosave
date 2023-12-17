@@ -1,0 +1,121 @@
+class Walker {
+  float x, y, s;
+  Direction d;
+  
+  Walker(float x, float y) {
+    this.x = x;
+    this.y = y;
+    d = Direction.UP;
+    s = 10;
+  }
+  
+  Walker(float x, float y, Direction d) {
+    this(x, y);
+    this.d = d;
+  }
+  
+  Walker(float x, float y, float s) {
+    this(x, y);
+    this.s = s;
+  }
+  
+  Walker(float x, float y, Direction d, float s) {
+    this(x, y);
+    this.d = d;
+    this.s = s;
+  }
+  
+  void setDirection() {
+      Direction[] newDirection;// = new Direction[3];
+      switch (d) {
+        case UP:
+          if (y > 2 * s) {
+            newDirection = new Direction[]{Direction.UP, Direction.RIGHT, Direction.LEFT};
+            d = newDirection[int(random(3))];
+          }
+          else {
+            newDirection = new Direction[]{Direction.RIGHT, Direction.LEFT};
+            d = newDirection[int(random(2))];
+          }
+          break;
+          
+        case DOWN:
+          if (y < height - 2 * s) {
+            newDirection = new Direction[]{Direction.DOWN, Direction.RIGHT, Direction.LEFT};
+            d = newDirection[int(random(3))];
+          }
+          else {
+            newDirection = new Direction[]{Direction.RIGHT, Direction.LEFT};
+            d = newDirection[int(random(2))];
+          }
+          break;
+          
+        case LEFT:
+          if (x > 2 * s) {
+            newDirection = new Direction[]{Direction.UP, Direction.DOWN, Direction.LEFT};
+            d = newDirection[int(random(3))];
+          }
+          else {
+            newDirection = new Direction[]{Direction.UP, Direction.DOWN};
+            d = newDirection[int(random(2))];
+          }
+          break;
+          
+        case RIGHT:
+          if (x < width - 2 * s) {
+            newDirection = new Direction[]{Direction.UP, Direction.DOWN, Direction.RIGHT};
+            d = newDirection[int(random(3))];
+          }
+          else {
+            newDirection = new Direction[]{Direction.UP, Direction.DOWN};
+            d = newDirection[int(random(2))];
+          }
+          break;
+          
+        default:
+          break;
+      }
+  }
+  
+  void update() {
+      float newY = 0;
+      float newX = 0;
+      switch (d) {
+        case UP:
+          newY = y - s;
+          line(x, y, x, newY);
+          y = newY;
+          setDirection();
+          break;
+          
+        case DOWN:
+          newY = y + s;
+          line(x, y, x, newY);
+          y = newY;
+          setDirection();
+          break;
+          
+        case LEFT:
+          newX = x - s;
+          line(x, y, newX, y);
+          x = newX;
+          setDirection();
+          break;
+          
+        case RIGHT:
+          newX = x + s;
+          line(x, y, newX, y);
+          x = newX;
+          setDirection();
+          break;
+          
+        default:
+          break;
+      }
+  }
+
+}
+ 
+enum Direction {
+  UP, DOWN, LEFT, RIGHT;
+}
